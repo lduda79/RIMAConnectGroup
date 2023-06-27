@@ -20,6 +20,7 @@ export default function Connect (props) {
     const [fetching, setFetch] = useState(true)
     const [button, setButton] = useState(true)
     const [changed, setChange] = useState(false)
+    const [help, setHelp] = useState(false)
     const [selectedNames, setSelectedNames] = useState([data.selectedNames])
     let currentUser = JSON.parse(localStorage.getItem("rimaUser"));
     console.log("test", fetching)
@@ -84,6 +85,10 @@ export default function Connect (props) {
         setOpen(false);
     } 
 
+    const closeHelp = () => {
+        setHelp(false);
+    }
+
     const handleSelectedNamesChange = (names) => {
         console.log(names, "names")
         console.log(selectedNames.some(item => item === names))
@@ -108,7 +113,14 @@ export default function Connect (props) {
                                 
                     {dataCollected? 
                     
-                    <><Box display="flex" justifyContent="flex-end" alignItems="flex-end">
+                    <>
+                    <Button onClick={setHelp} color="primary">Help</Button>
+                    <Dialog open={help} onClose={closeHelp}>
+                        <DialogContent>
+                            <Help closeHelp={closeHelp} help={help}/>
+                        </DialogContent>
+                    </Dialog>
+                    <Box display="flex" justifyContent="flex-end" alignItems="flex-end">
                             <TextField id="noa"
                                 label="Number"
                                 type="number"

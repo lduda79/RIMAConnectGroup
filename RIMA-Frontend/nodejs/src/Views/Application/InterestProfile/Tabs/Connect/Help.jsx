@@ -50,7 +50,8 @@ export default function Help() {
 
   const [selectedWindow, setSelectedWindow] = useState({ id: 1 });//You can change the id to 0 to show the Pop ups just once
 
-  const handleClose = () => {
+  const handleClose = () => {+
+    props.closeHelp();
     setSelectedWindow({ id: 0 });
   };
 
