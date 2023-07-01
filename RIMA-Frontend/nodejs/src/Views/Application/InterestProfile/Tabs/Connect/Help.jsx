@@ -52,6 +52,7 @@ export default function Help() {
 
   const handleClose = () => {
     setSelectedWindow({ id: 0 });
+    props.closeHelp();
   };
 
   const handleNext = () => {
